@@ -21,12 +21,11 @@ export default function Login() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen flex justify-center items-center mx-4">
+    <div className="h-full flex justify-center items-center mx-4">
       <Formik
         initialValues={initialValues}
         onSubmit={async (values) => {
           //TODO: add auth and handler to send data to BE
-          console.log(values);
           router.replace(ROUTES.home);
         }}
         validationSchema={loginValidationSchema}

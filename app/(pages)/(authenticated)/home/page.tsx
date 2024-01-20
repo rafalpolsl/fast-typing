@@ -5,7 +5,7 @@ export default function Home() {
   
   
   return (
-    <div className="min-h-screen flex gap-4 justify-center items-center">
+    <div className="h-full flex gap-4 justify-center items-center">
       <div className="flex flex-col text-center gap-4">
         <Cta as={"a"} href={ROUTES.typing}>
           Typing test

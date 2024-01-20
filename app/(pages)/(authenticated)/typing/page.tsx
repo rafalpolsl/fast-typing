@@ -148,7 +148,7 @@ export default function Typing() {
 
   if (results) {
     return (
-      <div className="h-screen flex justify-center items-center">
+      <div className="h-full flex justify-center items-center">
         <div className="flex flex-col gap-4 bg-prime_800 p-6 w-full max-w-lg rounded-md shadow-border_1">
           <h2>Results</h2>
           <p>Time: {results.time.toFixed(2)} s</p>
@@ -163,7 +163,7 @@ export default function Typing() {
 
   if (story === null) {
     return (
-      <div className="p-8 min-h-screen flex flex-col gap-2 justify-center items-center">
+      <div className="p-8 min-h-full flex flex-col gap-2 justify-center items-center">
         <p>Pick difficulty:</p>
         <span className="flex gap-3">
           {TEXT_LENGTH_OPTIONS.map((option) => (
@@ -183,7 +183,7 @@ export default function Typing() {
   const storyLetters = [...story.content.replaceAll(" ", "\u2002").split("")];
 
   return (
-    <div className="h-screen">
+    <div className="h-full">
       <div className="p-8 text-2xl max-w-7xl m-auto h-full flex">
         <div className="h-3/6 relative overflow-hidden m-auto">
           <div ref={letterContainerRef}>

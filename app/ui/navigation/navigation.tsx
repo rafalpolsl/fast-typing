@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+
 import { Dropdown, DropdownItemProps } from "../dropdown/dropdown";
 import { ROUTES } from "@/app/lib/routes";
 
@@ -33,7 +35,9 @@ export const Navigation = () => {
 
   return (
     <nav className="flex p-3 fixed w-full">
-      <div className="flex-0">LOGO</div>
+      <div className="flex-0">
+        <Link href={ROUTES.home}>LOGO</Link>
+      </div>
       <Dropdown items={menuItems} className={"ml-auto"} />
     </nav>
   );

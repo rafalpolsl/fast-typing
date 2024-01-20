@@ -7,9 +7,14 @@
   --font-color: white;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   background-color: var(--backgroundColor);
   color: var(--font-color);
+  height: 100%;
 }
 
 * {
