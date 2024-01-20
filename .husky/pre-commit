@@ -2,3 +2,4 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 npx eslint --ext .tsx,.ts ./ --max-warnings 0
+npx tsc

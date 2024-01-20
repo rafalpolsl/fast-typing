@@ -5,31 +5,29 @@ import type { ElementProps } from "@/app/types/common";
 
 type CtaVariants = keyof typeof variants;
 
-type ButtonProps = ElementProps<"button">;
-type AnchorProps = LinkProps & ElementProps<"a">;
+type ButtonProps = { as?: "button" } & ElementProps<"button">;
+type AnchorProps = { as: "a" } & LinkProps & ElementProps<"a">;
 
-export type CtaProps = { variant?: CtaVariants; as?: "button" | "a" } & (
-  | ButtonProps
-  | AnchorProps
-);
+export type CtaProps = { variant?: CtaVariants } & (ButtonProps | AnchorProps);
 
 const variants = {
-  default: { className: "p-4 leading-5 bg-prime_900 rounded-md hover:bg-prime_700 shadow-border_1" },
+  default: {
+    className:
+      "p-4 leading-5 bg-prime_900 rounded-md hover:bg-prime_700 shadow-border_1",
+  },
   // secondary: { className: "p-4" },
   // outlined: { className: "p-4" },
 };
 
 const checkIfAnchor = (
-  as: "button" | "a",
-  props: ButtonProps | AnchorProps
-): props is AnchorProps => as === "a";
+  props: AnchorProps | ButtonProps
+): props is AnchorProps => props.as === "a";
 
 export const Cta = ({
-  as = "button",
   variant = "default",
   ...props
 }: CtaProps) => {
-  if (checkIfAnchor(as, props)) {
+  if (checkIfAnchor(props)) {
     return (
       <Link
         {...variants[variant]}
@@ -37,13 +35,13 @@ export const Cta = ({
         className={classnames(variants[variant].className, props.className)}
       />
     );
+  } else {
+    return (
+      <button
+        {...variants[variant]}
+        {...props}
+        className={classnames(variants[variant].className, props.className)}
+      />
+    );
   }
-
-  return (
-    <button
-      {...variants[variant]}
-      {...props}
-      className={classnames(variants[variant].className, props.className)}
-    />
-  );
 };
