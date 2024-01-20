@@ -30,7 +30,6 @@ export default function Login() {
           router.replace(ROUTES.home);
         }}
         validationSchema={loginValidationSchema}
-        validate={console.log}
       >
         {({ setFieldValue }) => {
           const changeFormikValue =

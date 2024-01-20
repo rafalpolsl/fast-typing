@@ -8,7 +8,7 @@ type CtaVariants = keyof typeof variants;
 type ButtonProps = ElementProps<"button">;
 type AnchorProps = LinkProps & ElementProps<"a">;
 
-type CtaProps = { variant?: CtaVariants; as?: "button" | "a" } & (
+export type CtaProps = { variant?: CtaVariants; as?: "button" | "a" } & (
   | ButtonProps
   | AnchorProps
 );
