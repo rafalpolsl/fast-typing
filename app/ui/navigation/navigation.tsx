@@ -3,11 +3,18 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
+import { Cta } from "../cta/cta";
 import { Dropdown, DropdownItemProps } from "../dropdown/dropdown";
+
+import { useAppDispatch, useAppSelector } from "@/app/lib/redux/hooks";
+import { authActions, selectIsLoggedIn } from "@/app/lib/redux/slices/auth";
 import { ROUTES } from "@/app/lib/routes";
+import { removeUsernameFromCookies } from "@/app/lib/cookies/auth";
 
 export const Navigation = () => {
   const router = useRouter();
+  const dispatch = useAppDispatch();
+  const isLoggedIn = useAppSelector(selectIsLoggedIn);
 
   const menuItems: DropdownItemProps[] = [
     {
@@ -27,18 +34,34 @@ export const Navigation = () => {
     {
       id: "logout",
       label: "Logout",
-      onClick: () => {
-        router.replace(ROUTES.index);
+      onClick: async () => {
+        await removeUsernameFromCookies().then(() => {
+          dispatch(authActions.logout());
+          router.replace(ROUTES.index);
+        });
       },
     },
   ];
 
   return (
-    <nav className="flex p-3 fixed w-full">
+    <nav className="flex px-5 py-3 fixed w-full justify-between">
       <div className="flex-0">
-        <Link href={ROUTES.home}>LOGO</Link>
+        <Link
+          href={isLoggedIn ? ROUTES.home : ROUTES.index}
+          className="hover:text-prime_300"
+        >
+          LOGO
+        </Link>
       </div>
-      <Dropdown items={menuItems} className={"ml-auto"} />
+      <div>
+        {isLoggedIn ? (
+          <Dropdown items={menuItems} />
+        ) : (
+          <Cta as={"a"} href={ROUTES.login} variant={"link"}>
+            Log in
+          </Cta>
+        )}
+      </div>
     </nav>
   );
 };

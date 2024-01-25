@@ -5,6 +5,10 @@ import * as Yup from "yup";
 
 import { Cta } from "@/app/ui/cta/cta";
 import { Input } from "@/app/ui/forms/input/input";
+
+import { authActions } from "@/app/lib/redux/slices/auth";
+import { useAppDispatch } from "@/app/lib/redux/hooks";
+import { addUsernameToCookies } from "@/app/lib/cookies/auth";
 import { ROUTES } from "@/app/lib/routes";
 
 import type { ChangeEvent } from "react";
@@ -18,6 +22,7 @@ const initialValues = {
 };
 
 export default function Login() {
+  const dispatch = useAppDispatch();
   const router = useRouter();
 
   return (
@@ -25,7 +30,10 @@ export default function Login() {
       <Formik
         initialValues={initialValues}
         onSubmit={async (values) => {
+          "use client";
           //TODO: add auth and handler to send data to BE
+          await addUsernameToCookies(values.userName);
+          dispatch(authActions.restoreSession({ login: values.userName }));
           router.replace(ROUTES.home);
         }}
         validationSchema={loginValidationSchema}

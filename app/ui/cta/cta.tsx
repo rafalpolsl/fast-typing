@@ -16,30 +16,31 @@ const variants = {
       "p-4 leading-5 bg-prime_900 rounded-md hover:bg-prime_700 shadow-border_1",
   },
   // secondary: { className: "p-4" },
-  // outlined: { className: "p-4" },
+  link: { className: "underline underline-offset-8 hover:text-prime_300" },
 };
 
 const checkIfAnchor = (
   props: AnchorProps | ButtonProps
 ): props is AnchorProps => props.as === "a";
 
-export const Cta = ({
-  variant = "default",
-  ...props
-}: CtaProps) => {
+export const Cta = ({ variant = "default", ...props }: CtaProps) => {
   if (checkIfAnchor(props)) {
+    const { as, ...anchorProps } = props;
+
     return (
       <Link
         {...variants[variant]}
-        {...props}
+        {...anchorProps}
         className={classnames(variants[variant].className, props.className)}
       />
     );
   } else {
+    const { as, ...buttonProps } = props;
+
     return (
       <button
         {...variants[variant]}
-        {...props}
+        {...buttonProps}
         className={classnames(variants[variant].className, props.className)}
       />
     );

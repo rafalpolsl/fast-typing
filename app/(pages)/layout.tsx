@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import StoreProvider from "./StoreProvider";
+import StoreProvider from "./store-provider";
 import { Navigation } from "../ui/navigation/navigation";
 
 import "../globals.css";
@@ -13,7 +13,8 @@ export const metadata: Metadata = {
   description: "Fast Typing",
 };
 
-export default function RootLayout({
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -23,9 +24,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <StoreProvider>
           <Navigation />
-          <div className="pt-12 h-full">
-          {children}
-          </div>
+          <div className="pt-12 h-full">{children}</div>
         </StoreProvider>
       </body>
     </html>
