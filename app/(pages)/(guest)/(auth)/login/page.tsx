@@ -31,9 +31,10 @@ export default function Login() {
         initialValues={initialValues}
         onSubmit={async (values) => {
           "use client";
-          //TODO: add auth and handler to send data to BE
-          await addUsernameToCookies(values.userName);
-          dispatch(authActions.restoreSession({ login: values.userName }));
+          //TODO: add auth and handler to send data to Backend
+          addUsernameToCookies(values.userName);
+          dispatch(authActions.createSession({ login: values.userName }));
+          
           router.replace(ROUTES.home);
         }}
         validationSchema={loginValidationSchema}

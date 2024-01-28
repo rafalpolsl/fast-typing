@@ -9,6 +9,7 @@ import { TypingResults } from "./components/results";
 
 import { getRandomStory } from "./lib/game";
 import { ALLOWED_KEYS, TEXT_OPTIONS } from "./lib/helpers";
+import { updateScores } from "@/app/lib/cookies/score";
 
 export type StoryProps = {
   title: string;
@@ -192,14 +193,29 @@ export default function Typing() {
 
       const wordTypoList = typoList.filter(
         (value, index, self) =>
-          index === self.findIndex((t) => t.wordIndex === value.wordIndex)
+          index ===
+          self.findIndex(
+            (doubledWord) => doubledWord.wordIndex === value.wordIndex
+          )
       );
+
+      updateScores({
+        date: new Date().toISOString(),
+        difficulty: TEXT_OPTIONS.BRIEF,
+        storyLength: wordList.length,
+        time: timeTakenInSeconds,
+        typoCount: wordTypoList.length,
+        wpm: Math.round(
+          (wordList.length - wordTypoList.length) / timeTakenInMinutes
+        ),
+      });
 
       setResults({
         accuracyPercentage: 100 - (wordTypoList.length / wordList.length) * 100,
         time: timeTakenInSeconds,
-        wordPerMinute:
-          (wordList.length - wordTypoList.length) / timeTakenInMinutes,
+        wordPerMinute: Math.round(
+          (wordList.length - wordTypoList.length) / timeTakenInMinutes
+        ),
       });
     }
   }, [cursor]);

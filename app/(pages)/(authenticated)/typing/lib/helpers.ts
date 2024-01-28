@@ -4,12 +4,6 @@ export enum TEXT_OPTIONS {
   LONG = "long",
 }
 
-// export const TEXT_LENGTH_OPTIONS = [
-//   TEXT_OPTIONS.BRIEF,
-//   TEXT_OPTIONS.NORMAL,
-//   TEXT_OPTIONS.LONG,
-// ] as const;
-
 export const ALLOWED_KEYS = [
   "KeyA",
   "KeyB",

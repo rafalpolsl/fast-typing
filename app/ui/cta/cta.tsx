@@ -15,7 +15,6 @@ const variants = {
     className:
       "p-4 leading-5 bg-prime_900 rounded-md hover:bg-prime_700 shadow-border_1",
   },
-  // secondary: { className: "p-4" },
   link: { className: "underline underline-offset-8 hover:text-prime_300" },
 };
 

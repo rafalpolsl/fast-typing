@@ -1,11 +1,11 @@
 {
   "extends": "next/core-web-vitals",
-  "plugins": ["react-hooks", "@stylistic/js"],
+  "plugins": ["react-hooks", "@stylistic/js", "unused-imports"],
   "rules": {
     "react-hooks/exhaustive-deps": ["off"],
     "no-console": ["warn"],
-    // "": ["error", "always"],
     "arrow-spacing": ["error", {}],
-    "@stylistic/js/arrow-parens": ["error", "always"]
+    "@stylistic/js/arrow-parens": ["error", "always"],
+		"unused-imports/no-unused-imports": "error"
   }
 }

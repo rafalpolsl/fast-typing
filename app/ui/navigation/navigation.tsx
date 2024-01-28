@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from "@/app/lib/redux/hooks";
 import { authActions, selectIsLoggedIn } from "@/app/lib/redux/slices/auth";
 import { ROUTES } from "@/app/lib/routes";
 import { removeUsernameFromCookies } from "@/app/lib/cookies/auth";
+import { removeScores } from "@/app/lib/cookies/score";
 
 export const Navigation = () => {
   const router = useRouter();
@@ -34,11 +35,12 @@ export const Navigation = () => {
     {
       id: "logout",
       label: "Logout",
-      onClick: async () => {
-        await removeUsernameFromCookies().then(() => {
-          dispatch(authActions.logout());
-          router.replace(ROUTES.index);
-        });
+      onClick: () => {
+        removeUsernameFromCookies();
+        removeScores();
+
+        dispatch(authActions.logout());
+        router.replace(ROUTES.index);
       },
     },
   ];

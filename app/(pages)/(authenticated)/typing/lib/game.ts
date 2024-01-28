@@ -6,11 +6,6 @@ type GetRandomStoryResults = {
   content: string;
 };
 
-export const startGame = () => {
-  // get text
-  // check
-};
-
 // TODO: move it to common folder or somewhere ther :P
 export const getRandomInt = (min: number, max: number) => {
   min = Math.ceil(min);
