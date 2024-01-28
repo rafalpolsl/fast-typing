@@ -15,13 +15,17 @@ export default function StoreProvider({ children }: StoreProviderProps) {
 
   useEffect(() => {
     "use client";
-    const username = getUsernameFromCookies();
+    const setSession = async () => {
+      const username = await getUsernameFromCookies();
 
-    if (username?.value && storeRef.current) {
-      storeRef.current.dispatch(
-        authSlice.actions.createSession({ login: username.value })
-      );
-    }
+      if (username?.value && storeRef.current) {
+        storeRef.current.dispatch(
+          authSlice.actions.createSession({ username: username.value })
+        );
+      }
+    };
+
+    setSession();
   }, [storeRef]);
 
   if (!storeRef.current) {

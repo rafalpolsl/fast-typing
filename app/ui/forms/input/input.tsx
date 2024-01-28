@@ -16,19 +16,24 @@ type InputVariants = keyof typeof variants;
 type InputProps = ElementProps<"input"> & {
   variant?: InputVariants;
   innerRef?: RefObject<HTMLInputElement>;
+  error?: string;
 };
 
 export const Input = ({
   variant = "default",
   innerRef,
+  error,
   ...props
 }: InputProps) => {
   return (
-    <input
-      {...variants[variant]}
-      {...props}
-      className={classNames(variants[variant].className, props.className)}
-      ref={innerRef}
-    />
+    <div className="flex flex-col">
+      <input
+        ref={innerRef}
+        {...variants[variant]}
+        {...props}
+        className={classNames(variants[variant].className, props.className)}
+      />
+      {error && <span className="text-sm text-prime_300 mt-2">{error}</span>}
+    </div>
   );
 };

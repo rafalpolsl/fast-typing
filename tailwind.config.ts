@@ -19,6 +19,7 @@ const config: Config = {
     },
     boxShadow: {
       border_1: "0 0 0 2px hsla(0,0%,100%,.14)",
+      border_2: "0 0 0 2px hsla(0,0%,100%,.3)",
     },
   },
   plugins: [],

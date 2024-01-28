@@ -6,6 +6,7 @@
     "no-console": ["warn"],
     "arrow-spacing": ["error", {}],
     "@stylistic/js/arrow-parens": ["error", "always"],
-		"unused-imports/no-unused-imports": "error"
+		"unused-imports/no-unused-imports": "warn",
+    "unused-imports/no-unused-vars": "off"
   }
 }

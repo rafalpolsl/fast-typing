@@ -13,7 +13,11 @@ export type CtaProps = { variant?: CtaVariants } & (ButtonProps | AnchorProps);
 const variants = {
   default: {
     className:
-      "p-4 leading-5 bg-prime_900 rounded-md hover:bg-prime_700 shadow-border_1",
+      "p-4 leading-5 bg-prime_900 rounded-md hover:bg-prime_700 shadow-border_1 text-center",
+  },
+  secondary: {
+    className:
+      "p-4 leading-5 bg-prime_500 rounded-md hover:bg-prime_700 shadow-border_2 text-center",
   },
   link: { className: "underline underline-offset-8 hover:text-prime_300" },
 };

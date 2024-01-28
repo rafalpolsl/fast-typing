@@ -10,15 +10,16 @@ import { authActions } from "@/app/lib/redux/slices/auth";
 import { useAppDispatch } from "@/app/lib/redux/hooks";
 import { addUsernameToCookies } from "@/app/lib/cookies/auth";
 import { ROUTES } from "@/app/lib/routes";
+import { REQUIRED_FIELD_ERROR } from "@/app/lib/helpers/validation";
 
 import type { ChangeEvent } from "react";
 
 const loginValidationSchema = Yup.object().shape({
-  userName: Yup.string().required("This field is required"),
+  username: Yup.string().required(REQUIRED_FIELD_ERROR),
 });
 
 const initialValues = {
-  userName: "",
+  username: "",
 };
 
 export default function Login() {
@@ -32,14 +33,14 @@ export default function Login() {
         onSubmit={async (values) => {
           "use client";
           //TODO: add auth and handler to send data to Backend
-          addUsernameToCookies(values.userName);
-          dispatch(authActions.createSession({ login: values.userName }));
+          addUsernameToCookies(values.username);
+          dispatch(authActions.createSession({ username: values.username }));
           
           router.replace(ROUTES.home);
         }}
         validationSchema={loginValidationSchema}
       >
-        {({ setFieldValue }) => {
+        {({ errors, setFieldValue }) => {
           const changeFormikValue =
             (field: string) => (event: ChangeEvent<HTMLInputElement>) =>
               setFieldValue(field, event.target.value);
@@ -47,12 +48,13 @@ export default function Login() {
           return (
             <Form className="flex flex-col gap-4 bg-prime_800 p-6 w-full max-w-lg rounded-md shadow-border_1">
               <span className="flex flex-col gap-2">
-                <label htmlFor="userName">Username</label>
+                <label htmlFor="username">Username</label>
                 <Input
-                  id="userName"
-                  name="userName"
+                  id="username"
+                  name="username"
                   placeholder="Username"
-                  onChange={changeFormikValue("userName")}
+                  onChange={changeFormikValue("username")}
+                  error={errors.username}
                 />
               </span>
               <Cta as={"button"} type={"submit"} className={"w-fit"}>

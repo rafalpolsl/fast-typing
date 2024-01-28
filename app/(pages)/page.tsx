@@ -5,9 +5,9 @@ import { getUsernameFromCookies } from "../lib/cookies/auth";
 import { ROUTES } from "../lib/routes";
 
 export default async function Home() {
-  
-  const username = await getUsernameFromCookies()
-  if (username) {
+  const isUserLoggedIn = await getUsernameFromCookies()
+
+  if (isUserLoggedIn) {
     redirect(ROUTES.typing, RedirectType.replace);
   }
 

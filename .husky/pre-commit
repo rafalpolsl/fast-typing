@@ -1,6 +1,9 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+echo "Running EsLint ..."
 npx eslint --ext .tsx,.ts ./ --max-warnings 0
+echo "Running Typescript ..."
 npx tsc
+echo "Running Jest ..."
 npx jest

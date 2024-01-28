@@ -1,5 +1,6 @@
 import { Cta } from "@/app/ui/cta/cta";
 import type { ResultProps } from "../page";
+import { ROUTES } from "@/app/lib/routes";
 
 interface TypingResultsProps {
   results: ResultProps;
@@ -17,7 +18,19 @@ export const TypingResults = ({
         <p>Time: {results.time.toFixed(2)} s</p>
         <p>WPM: {results.wordPerMinute.toFixed(2)}</p>
         <p>Accuracy: {results.accuracyPercentage.toFixed(0)}%</p>
-        <Cta onClick={setDefaultValues}>Play again</Cta>
+        <div className="flex gap-3 flex-col md:flex-row w-full">
+          <Cta onClick={setDefaultValues} className="w-full">
+            Play again
+          </Cta>
+          <Cta
+            as={"a"}
+            href={ROUTES.home}
+            variant={"secondary"}
+            className="w-full"
+          >
+            Home
+          </Cta>
+        </div>
       </div>
     </div>
   );

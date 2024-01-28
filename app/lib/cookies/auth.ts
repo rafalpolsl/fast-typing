@@ -1,6 +1,7 @@
 "use server";
 import { cookies } from "next/headers";
 import { USERNAME_COOKIE_KEY } from "./keys";
+import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
 export const addUsernameToCookies = (username: string) => {
   cookies().set(USERNAME_COOKIE_KEY, username, {
@@ -8,8 +9,8 @@ export const addUsernameToCookies = (username: string) => {
   });
 };
 
-export const getUsernameFromCookies = () => {
-  return cookies().get(USERNAME_COOKIE_KEY);
+export const getUsernameFromCookies = async (): Promise<RequestCookie | undefined> => {
+  return await cookies().get(USERNAME_COOKIE_KEY);
 };
 
 export const removeUsernameFromCookies = () => {
