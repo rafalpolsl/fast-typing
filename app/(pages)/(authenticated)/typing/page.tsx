@@ -49,6 +49,9 @@ export default function Typing() {
   const [resultDashboard, setResultDashboard] =
     useState<ResultDashboardProps | null>(null);
 
+  /**
+   * Set initial data
+   */
   const setDefaultValues = () => {
     setResultDashboard(null);
     setWordList([]);
