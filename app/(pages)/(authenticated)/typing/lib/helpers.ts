@@ -51,3 +51,15 @@ export const ALLOWED_KEYS = [
   "Digit8",
   "Digit9",
 ];
+
+export const scrollToActiveElement = (
+  observedElement?: Element,
+  rootElement?: Element
+) => {
+  if (
+    (observedElement as HTMLElement)?.offsetTop !==
+    (rootElement as HTMLElement)?.offsetTop
+  ) {
+    return observedElement?.scrollIntoView();
+  }
+};

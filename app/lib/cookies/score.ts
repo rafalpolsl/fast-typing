@@ -3,7 +3,7 @@ import { USER_STATISTICS_LOCAL_STORAGE_KEY } from "./keys";
 
 export type ScoreProps = {
   date: string;
-  wpm: number;
+  wordPerMinute: number;
   time: number;
   storyLength: number;
   typoCount: number;

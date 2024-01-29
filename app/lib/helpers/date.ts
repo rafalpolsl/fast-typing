@@ -22,3 +22,5 @@ export const transformDate = (date: string, type: "YYYY-MM-DD") => {
     }
   }
 };
+
+export const measureTime = () => new Date().getTime();

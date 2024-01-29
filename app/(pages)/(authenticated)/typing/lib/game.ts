@@ -6,7 +6,7 @@ type GetRandomStoryResults = {
   content: string;
 };
 
-// TODO: move it to common folder or somewhere ther :P
+// TODO: move it to common folder or somewhere else :P
 export const getRandomInt = (min: number, max: number) => {
   min = Math.ceil(min);
   max = Math.floor(max);

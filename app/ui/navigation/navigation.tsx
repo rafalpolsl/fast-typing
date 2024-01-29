@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 import { Cta } from "../cta/cta";
 import { Dropdown, DropdownItemProps } from "../dropdown/dropdown";
+import Logo from '../../../public/logo-white.svg'
 
 import { useAppDispatch, useAppSelector } from "@/app/lib/redux/hooks";
 import { authActions, selectIsLoggedIn } from "@/app/lib/redux/slices/auth";
@@ -52,7 +53,7 @@ export const Navigation = () => {
           href={isLoggedIn ? ROUTES.home : ROUTES.index}
           className="hover:text-prime_300"
         >
-          LOGO
+          <Logo />
         </Link>
       </div>
       <div>

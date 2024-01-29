@@ -72,8 +72,8 @@ export const TenLatestScoresChart = () => {
           borderColor: "rgb(255, 99, 132)",
           backgroundColor: "rgba(255, 99, 132, 0.5)",
           parsing: {
-            xAxisKey: "wpm",
-            yAxisKey: "wpm",
+            xAxisKey: "wordPerMinute",
+            yAxisKey: "wordPerMinute",
           },
         },
       ],
@@ -109,7 +109,7 @@ export const FiveTopScoresChart = () => {
           borderColor: "rgb(255, 99, 132)",
           backgroundColor: "rgba(255, 99, 132, 0.5)",
           parsing: {
-            xAxisKey: "wpm",
+            xAxisKey: "wordPerMinute",
             yAxisKey: "sortPosition",
           },
         },
@@ -152,7 +152,7 @@ export const FiveTopScoresChart = () => {
 
   useEffect(() => {
     const scores = getScores() || [];
-    scores.sort((a, b) => b.wpm - a.wpm);
+    scores.sort((a, b) => b.wordPerMinute - a.wordPerMinute);
 
     const topResults = scores.slice(0, 5).map((score, index) => ({...score, sortPosition: index }));
 
