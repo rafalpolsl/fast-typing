@@ -1,4 +1,4 @@
-name: Unit Tests
+name: Pipeline Tests
 
 on: [pull_request]
 
@@ -21,4 +21,4 @@ jobs:
       - name: jest test
         run: npm test
       - name: eslint test
-        run: npm eslint
+        run: npm run eslint
