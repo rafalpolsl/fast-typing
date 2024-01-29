@@ -1,0 +1,9 @@
+{
+  "source": {
+    "include": ["./app/**/*.tsx", "./app/**/*.ts"],
+    "exclude": ["node_modules"]
+  },
+  "opts": {
+    "destination": "docs"
+  }
+}
