@@ -10,11 +10,17 @@ interface StoreProviderProps {
   children: React.ReactNode;
 }
 
+/**
+ * @returns All children share `store` which allow to access every component inside the StoreProvider the data kept in redux state
+ */
 export default function StoreProvider({ children }: StoreProviderProps) {
   const storeRef = useRef<AppStore>();
 
   useEffect(() => {
     "use client";
+    /**
+     * Set user session and set authentication in redux
+     */
     const setSession = async () => {
       const username = await getUsernameFromCookies();
 

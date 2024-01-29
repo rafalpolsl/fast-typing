@@ -32,7 +32,6 @@ export default function Login() {
         initialValues={initialValues}
         onSubmit={async (values) => {
           "use client";
-          //TODO: add auth and handler to send data to Backend
           addUsernameToCookies(values.username);
           dispatch(authActions.createSession({ username: values.username }));
           

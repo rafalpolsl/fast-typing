@@ -115,8 +115,6 @@ export const Game = ({
     [story?.content, wordList, cursor]
   );
 
-  //TODO: do we need story.content?
-
   return (
     <div className="h-full">
       <div className="p-8 text-2xl max-w-7xl m-auto h-full flex">

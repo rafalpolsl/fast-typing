@@ -10,6 +10,11 @@ export type ScoreProps = {
   difficulty: TEXT_OPTIONS;
 };
 
+/**
+ * Get user scores
+ *
+ * @returns {ScoreProps[]} - get user scores saved in localStorage
+ */
 export const getScores = (): ScoreProps[] => {
   const score =
     typeof window !== "undefined"
@@ -23,6 +28,11 @@ export const getScores = (): ScoreProps[] => {
   }
 };
 
+/**
+ * Add new score to existing scores
+ * 
+ * @param {ScoreProps} scoreToAdd - new score that is going to be saved 
+ */
 export const updateScores = (scoreToAdd: ScoreProps) => {
   const previousScores = getScores()
   
@@ -32,4 +42,7 @@ export const updateScores = (scoreToAdd: ScoreProps) => {
   );
 };
 
+/**
+ * Remove all records from localStorage
+ */
 export const removeScores = () => localStorage.clear()
